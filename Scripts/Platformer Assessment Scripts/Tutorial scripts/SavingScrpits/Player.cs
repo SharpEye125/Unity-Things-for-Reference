@@ -13,11 +13,15 @@ public class Player : MonoBehaviour
     {
         LoadPlayer();
     }
-
+    private void Update()
+    {
+        health = GetComponent<PlayerHealth>().health;
+    }
     public void SavePlayer(int buildIndex)
     {
         LevelToIndex(buildIndex);
         SaveSystem.SavePlayer(this);
+
     }
 
     public void LoadPlayer()
@@ -37,5 +41,9 @@ public class Player : MonoBehaviour
     public void LevelToIndex(int buildIndex)
     {
         level = SceneManager.GetActiveScene().buildIndex;
+    }
+    public void HealthToHealth()
+    {
+        health = GetComponent<PlayerHealth>().health;
     }
 }
